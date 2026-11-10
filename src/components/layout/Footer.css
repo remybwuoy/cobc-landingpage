@@ -9,7 +9,8 @@
 .foot-brand img{height:56px;width:auto;margin-bottom:22px}
 .foot-grid .lede{color:var(--on-dark-sub)}
 .foot-col{grid-column:span 2}
-.foot-col:first-of-type{grid-column:8 / span 2}
+.foot-col:first-of-type{grid-column:7 / span 2}
+.foot-col a[aria-current="page"]{color:var(--mint)}
 .foot-col h4{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-sub);font-weight:600;margin-bottom:14px}
 .foot-col ul{list-style:none;display:grid;gap:8px}
 .foot-col a{display:inline-flex;min-height:32px;align-items:center}
@@ -27,4 +28,5 @@
 @media (max-width:900px){
   .foot-brand{grid-column:1 / -1}
   .foot-col,.foot-col:first-of-type{grid-column:span 6;margin-top:24px}
+  .foot-col:last-of-type{grid-column:1 / -1}
 }

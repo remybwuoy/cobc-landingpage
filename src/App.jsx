@@ -1,65 +1,65 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import Ambient from './components/layout/Ambient';
 import Nav from './components/layout/Nav';
-import Menu from './components/layout/Menu';
 import ToTop from './components/layout/ToTop';
 import Footer from './components/layout/Footer';
-import Hero from './components/sections/Hero';
-import Story from './components/sections/Story';
-import Statement from './components/sections/Statement';
-import Platform from './components/sections/Platform';
-import Who from './components/sections/Who';
-import Stats from './components/sections/Stats';
-import Trust from './components/sections/Trust';
-import Faq from './components/sections/Faq';
+import HomePage from './pages/HomePage';
+import LegalPage from './pages/LegalPage';
+import { useSiteScroll } from './hooks/useSiteScroll';
+import { useRoute, startLinkRouting } from './lib/router';
+import { jumpToTop, scrollToHash } from './lib/scroll';
 import { ScrollTrigger } from './lib/gsap';
-import { startSmoothScroll, scrollToHash } from './lib/scroll';
+import { BRAND } from './data/content';
+import { legalPages } from './data/legal';
 
-export default function App() {
-  useEffect(() => {
-    const stop = startSmoothScroll();
+const HOME_TITLE = document.title;
+const HOME_DESC = document.querySelector('meta[name="description"]')?.content ?? '';
 
-    // In-page anchors scroll smoothly (through Lenis when it's running) and move focus.
-    const onClick = (e) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      const a = e.target.closest('a[href^="#"]');
-      const hash = a?.getAttribute('href');
-      if (!hash || hash.length < 2) return;
-      e.preventDefault();
-      scrollToHash(hash);
-    };
-    document.addEventListener('click', onClick);
+/** Browser tab title and meta description for each route. */
+function setMeta(route) {
+  const legal = legalPages[route];
+  document.title = legal ? `${legal.title} — ${BRAND}` : HOME_TITLE;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', legal ? legal.intro : HOME_DESC);
+}
 
-    // Fonts and images change layout after mount, so recalculate trigger positions.
-    const refresh = () => ScrollTrigger.refresh();
-    document.fonts?.ready.then(refresh);
-    if (document.readyState === 'complete') refresh();
-    else window.addEventListener('load', refresh, { once: true });
-
-    return () => {
-      stop();
-      document.removeEventListener('click', onClick);
-      window.removeEventListener('load', refresh);
-    };
-  }, []);
-
+/** Header, page, footer and back-to-top for one route. Keyed by route, so each page mounts fresh. */
+function Page({ route }) {
+  const home = route === 'home';
   return (
     <>
       <Ambient />
-      <Nav />
-      <Menu />
-      <main id="top">
-        <Hero />
-        <Story />
-        <Statement />
-        <Platform />
-        <Who />
-        <Stats />
-        <Trust />
-        <Faq />
-      </main>
-      <Footer />
+      <Nav homeHref={home ? '#top' : './'} />
+      {home ? <HomePage /> : <LegalPage page={route} />}
+      <Footer onHome={home} current={home ? undefined : route} />
       <ToTop />
     </>
   );
+}
+
+export default function App() {
+  const route = useRoute();
+  const first = useRef(true);
+  useSiteScroll();
+  useEffect(() => startLinkRouting(), []);
+
+  // A new route starts at the top, unless the URL names a section (e.g. ./#faq, privacy#cookies).
+  useLayoutEffect(() => {
+    setMeta(route);
+    const isFirst = first.current;
+    first.current = false;
+    if (!isFirst) jumpToTop();
+    ScrollTrigger.refresh();
+    if (location.hash.length < 2) return undefined;
+    // Wait for fonts and a short settle so the target's position is final.
+    let alive = true;
+    const settle = new Promise((r) => setTimeout(r, isFirst ? 350 : 150));
+    Promise.all([settle, document.fonts?.ready]).then(() => {
+      if (!alive) return;
+      ScrollTrigger.refresh();
+      scrollToHash(location.hash);
+    });
+    return () => { alive = false; };
+  }, [route]);
+
+  return <Page key={route} route={route} />;
 }

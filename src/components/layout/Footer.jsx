@@ -10,19 +10,26 @@ const MARK = [...BRAND_SHORT.accent];
 const YEAR = new Date().getFullYear();
 const localTime = () => 'Local time ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-function LinkCol({ title, links }) {
+/** On pages other than home, in-page anchors (#faq) must point at the home page (./#faq). */
+const toHref = (href, onHome) => (!onHome && href.startsWith('#') ? `./${href}` : href);
+
+function LinkCol({ title, links, onHome, current }) {
   return (
     <div className="foot-col">
       <h4>{title}</h4>
       <ul>
-        {links.map((l) => <li key={l.label}><a className="ul" href={l.href}>{l.label}</a></li>)}
+        {links.map((l) => (
+          <li key={l.label}>
+            <a className="ul" href={toHref(l.href, onHome)} aria-current={current === l.href ? 'page' : undefined}>{l.label}</a>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
 /** Dark footer: logo and description, link columns, a ghost wordmark sized to the full width, then copyright, credit and a local clock. */
-export default function Footer() {
+export default function Footer({ onHome = true, current }) {
   const ref = useRef(null);
   const wmRef = useRef(null);
   const [clock, setClock] = useState(localTime);
@@ -61,8 +68,9 @@ export default function Footer() {
             <img src={LOGO_SRC} alt={BRAND} width="445" height="506" loading="lazy" />
             <p className="lede">Connecting care, careers, commerce and community. The healthcare ecosystem app for the people who make care work.</p>
           </div>
-          <LinkCol title="Explore" links={footerLinks.explore} />
-          <LinkCol title="Start" links={footerLinks.start} />
+          <LinkCol title="Explore" links={footerLinks.explore} onHome={onHome} current={current} />
+          <LinkCol title="Start" links={footerLinks.start} onHome={onHome} current={current} />
+          <LinkCol title="Legal" links={footerLinks.legal} onHome={onHome} current={current} />
         </div>
         <div className="wordmark" aria-hidden="true" ref={wmRef}>
           {WORD.map((c, i) => <span key={`w${i}`}>{c}</span>)}
