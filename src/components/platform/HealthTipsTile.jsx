@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import Tile, { TileHead } from './Tile';
 import { useInViewOnce } from '../../hooks/useInViewOnce';
 import { reduceMotion } from '../../lib/env';
-import { copilot } from '../../data/content';
+import { healthTip } from '../../data/content';
 
-/** The one dark tile: the AI reply types itself out once the tile is in view. */
-export default function CopilotTile() {
+/** The one dark tile: a wellness question whose AI answer types itself out once the tile is in view. */
+export default function HealthTipsTile() {
   const ref = useRef(null);
   const inView = useInViewOnce(ref);
-  const full = copilot.answer;
+  const full = healthTip.answer;
   const [shown, setShown] = useState(reduceMotion ? full.length : 0);
 
   useEffect(() => {
@@ -26,12 +26,13 @@ export default function CopilotTile() {
   const typing = shown < full.length && inView;
   return (
     <Tile ref={ref} size="21" dark>
-      <TileHead title="AI Copilot" text="Career advice, résumé reviews, interview prep and compliance reminders, everywhere in the app." arrow />
+      <TileHead title="Health tips" text="Ask about everyday wellness and get an answer in seconds. Save tips, rate them and set reminders." arrow />
       <div className="chat">
-        <div className="bubble me">{copilot.question}</div>
+        <div className="bubble me">{healthTip.question}</div>
         <div className="bubble ai" aria-label={full}>
           <span aria-hidden="true">{full.slice(0, shown)}{typing && <span className="caret" />}</span>
         </div>
+        <p className="disclaimer">{healthTip.disclaimer}</p>
       </div>
     </Tile>
   );

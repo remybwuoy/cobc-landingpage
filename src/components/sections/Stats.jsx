@@ -49,7 +49,7 @@ export default function Stats() {
             </div>
           ))}
         </div>
-        <p className="note src">Counts from the CareConnect product requirements, v1.0.</p>
+        <p className="note src">Counts from the current CareOnboardConnect build.</p>
       </div>
     </section>
   );

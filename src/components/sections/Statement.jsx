@@ -9,7 +9,7 @@ const words = (text) => text.split(' ').map((w, i) => (
   <Fragment key={i}>{i > 0 && ' '}<span className="w">{w}</span></Fragment>
 ));
 
-/** Why CareConnect exists: a big paragraph whose words fill from muted to ink as you scroll. */
+/** Why CareOnboardConnect exists: a big paragraph whose words fill from muted to ink as you scroll. */
 export default function Statement() {
   const ref = useRef(null);
   useGsap(() => {
@@ -20,8 +20,8 @@ export default function Statement() {
   }, ref);
 
   return (
-    <section className="statement wrap" aria-label="Why CareConnect">
-      <p className="label"><span className="idx">02</span>&nbsp; Why CareConnect</p>
+    <section className="statement wrap" aria-label="Why CareOnboardConnect">
+      <p className="label"><span className="idx">02</span>&nbsp; Why CareOnboardConnect</p>
       <p className="big" id="statement" ref={ref}>
         <span className="lead">{words(statement.lead)}</span> {words(statement.rest)}
       </p>

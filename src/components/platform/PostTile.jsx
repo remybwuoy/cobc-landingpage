@@ -30,7 +30,7 @@ export default function PostTile() {
     <Tile size="22">
       <div className="post-head">
         <span className="av" aria-hidden="true">SM</span>
-        <div><b>Community</b><div className="note">A post from the CareConnect feed</div></div>
+        <div><b>Community</b><div className="note">A post from the CareOnboardConnect feed</div></div>
       </div>
       <div className="post-img">
         <img src={postImg} alt="A post reading: Burnout is not a badge of honor. Rest is part of the work." loading="lazy" />

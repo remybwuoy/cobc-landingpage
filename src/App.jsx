@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import Ambient from './components/layout/Ambient';
 import Nav from './components/layout/Nav';
-import Dock from './components/layout/Dock';
+import Menu from './components/layout/Menu';
+import ToTop from './components/layout/ToTop';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
 import Story from './components/sections/Story';
@@ -10,7 +11,7 @@ import Platform from './components/sections/Platform';
 import Who from './components/sections/Who';
 import Stats from './components/sections/Stats';
 import Trust from './components/sections/Trust';
-import Join from './components/sections/Join';
+import Faq from './components/sections/Faq';
 import { ScrollTrigger } from './lib/gsap';
 import { startSmoothScroll, scrollToHash } from './lib/scroll';
 
@@ -46,7 +47,7 @@ export default function App() {
     <>
       <Ambient />
       <Nav />
-      <Dock />
+      <Menu />
       <main id="top">
         <Hero />
         <Story />
@@ -55,9 +56,10 @@ export default function App() {
         <Who />
         <Stats />
         <Trust />
-        <Join />
+        <Faq />
       </main>
       <Footer />
+      <ToTop />
     </>
   );
 }

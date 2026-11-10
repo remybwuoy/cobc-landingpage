@@ -37,7 +37,7 @@ function TextSize() {
   );
 }
 
-/** Dark contrast moment: security and accessibility lists. */
+/** Dark contrast moment: security and everyday-comfort lists. */
 export default function Trust() {
   const colsRef = useRef(null);
   useGsap(() => {
@@ -52,10 +52,10 @@ export default function Trust() {
       <div className="wrap">
         <SectionHead idx="06" label="Trust" id="trustH"
           title={<>Trust is built in,<br /><span className="t">not bolted on.</span></>}
-          lede="Health information and careers are personal. Security and accessibility are part of the foundation." />
+          lede="Health information, careers and money are personal. Consent, verification and privacy choices are part of the foundation." />
         <div className="trust-cols" ref={colsRef}>
           <TrustCol n="01" title="Security" items={trust.security} />
-          <TrustCol n="02" title="Accessibility" items={trust.accessibility}>
+          <TrustCol n="02" title="Everyday comfort" items={trust.everyday}>
             <TextSize />
           </TrustCol>
         </div>

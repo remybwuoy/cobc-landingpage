@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGsap } from '../../hooks/useGsap';
 import { gsap, EXPO } from '../../lib/gsap';
-import { footerLinks } from '../../data/content';
+import { footerLinks, BRAND, BRAND_SHORT, MAKER, LOGO_SRC } from '../../data/content';
+import { HeartIcon } from '../ui/Icons';
 import './Footer.css';
 
-const WORD = ['C', 'a', 'r', 'e'];
-const MARK = ['C', 'o', 'n', 'n', 'e', 'c', 't'];
+const WORD = [...BRAND_SHORT.lead];
+const MARK = [...BRAND_SHORT.accent];
+const YEAR = new Date().getFullYear();
 const localTime = () => 'Local time ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
 function LinkCol({ title, links }) {
@@ -13,13 +15,13 @@ function LinkCol({ title, links }) {
     <div className="foot-col">
       <h4>{title}</h4>
       <ul>
-        {links.map((l) => <li key={l.href}><a className="ul" href={l.href}>{l.label}</a></li>)}
+        {links.map((l) => <li key={l.label}><a className="ul" href={l.href}>{l.label}</a></li>)}
       </ul>
     </div>
   );
 }
 
-/** Dark footer with link columns, a ghost wordmark sized to the full width, and a local clock. */
+/** Dark footer: logo and description, link columns, a ghost wordmark sized to the full width, then copyright, credit and a local clock. */
 export default function Footer() {
   const ref = useRef(null);
   const wmRef = useRef(null);
@@ -55,7 +57,10 @@ export default function Footer() {
     <footer className="footer" id="footer" ref={ref}>
       <div className="wrap">
         <div className="foot-grid">
-          <p className="lede">Connecting care, careers, commerce and community. The healthcare ecosystem app for the people who make care work.</p>
+          <div className="foot-brand">
+            <img src={LOGO_SRC} alt={BRAND} width="445" height="506" loading="lazy" />
+            <p className="lede">Connecting care, careers, commerce and community. The healthcare ecosystem app for the people who make care work.</p>
+          </div>
           <LinkCol title="Explore" links={footerLinks.explore} />
           <LinkCol title="Start" links={footerLinks.start} />
         </div>
@@ -64,7 +69,8 @@ export default function Footer() {
           {MARK.map((c, i) => <span key={`m${i}`} className="c">{c}</span>)}
         </div>
         <div className="foot-bar">
-          <span>Concept website · app screens from the CareConnect build · other interface content illustrative</span>
+          <span>© {YEAR} {BRAND}. All rights reserved.</span>
+          <span className="made">Made with <span className="made-heart" role="img" aria-label="love"><HeartIcon /></span> by {MAKER}</span>
           <span>{clock}</span>
         </div>
       </div>

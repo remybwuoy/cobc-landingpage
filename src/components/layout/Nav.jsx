@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import Button from '../ui/Button';
-import { SearchIcon } from '../ui/Icons';
+import ThemeToggle from '../ui/ThemeToggle';
+import { AUTH_URL, AUTH_LABEL, BRAND, LOGO_SRC } from '../../data/content';
 import './Nav.css';
 
-const logoSrc = `${import.meta.env.BASE_URL}logo-mark.png`;
-
 /**
- * Fixed top bar. Puts state classes on <html> that the CSS reads:
- * `scrolled` (past 30px), `compact` (past 160px: the wordmark collapses) and
- * `on-dark` (a dark section sits under the bar).
+ * Fixed top bar: logo, theme toggle and Login / Sign up. The main menu (Menu.jsx) sits
+ * in this bar over the hero and moves to the bottom of the screen after it.
+ * Puts state classes on <html> that the CSS reads: `scrolled` (past 30px),
+ * `compact` (past 160px: the wordmark collapses) and `on-dark` (a dark section sits under the bar).
  */
 export default function Nav() {
   useEffect(() => {
@@ -41,13 +41,13 @@ export default function Nav() {
   return (
     <header className="nav" id="nav">
       <div className="wrap nav-inner">
-        <a href="#top" className="logo" aria-label="CareConnect home">
-          <img src={logoSrc} alt="" />
-          <span className="wm">Care<b>Connect</b></span>
+        <a href="#top" className="logo" aria-label={`${BRAND} home`}>
+          <img src={LOGO_SRC} alt="" width="445" height="506" />
+          <span className="wm">CareOnboard<b>Connect</b></span>
         </a>
         <div className="nav-right">
-          <a href="#app" className="icon-btn" aria-label="See the app"><SearchIcon /></a>
-          <Button href="#join" label="Get early access" small magnetic />
+          <ThemeToggle />
+          <Button href={AUTH_URL} label={AUTH_LABEL} small magnetic className="nav-auth" />
         </div>
       </div>
     </header>

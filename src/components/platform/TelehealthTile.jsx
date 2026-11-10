@@ -20,7 +20,7 @@ export default function TelehealthTile() {
 
   return (
     <Tile ref={ref}>
-      <TileHead title="Telehealth" text="Book, wait and meet your provider securely." />
+      <TileHead title="Telehealth" text="Pick a slot, choose how to pay and meet by video." />
       <div>
         <div className="waiting"><span className="pulse" />Virtual waiting room</div>
         <div className="timer">{fmt(secs)}</div>
