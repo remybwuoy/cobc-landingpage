@@ -18,8 +18,11 @@
 .menu a svg{flex:none}
 .menu a span{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .6s var(--ease-expo), opacity .3s}
 .menu a:not(.is-active){gap:0}
-.menu a.is-active{background:var(--main-color);color:var(--on-main);border-color:var(--main-color)}
-.menu a:hover:not(.is-active){background:var(--surface-2)}
+/* active item: ink fill, so near-black in light mode and near-white in dark mode */
+.menu a.is-active{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+/* hover: the same black (light) / white (dark) fill, a shade deeper on the active item */
+.menu a:hover{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.menu a.is-active:hover{background:var(--ink-hover);border-color:var(--ink-hover)}
 
 /* docked, and the top bar on narrower screens: icons, with the active item's short label */
 .menu .full{display:none}
