@@ -1,0 +1,16 @@
+/* =========================================================
+   7. STATS — odometer columns (Lightspark rules + odometer)
+   ========================================================= */
+.stats{background:var(--surface);padding-bottom:clamp(110px,12vw,180px)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--stroke)}
+.col{border-right:1px solid var(--stroke);padding:22px 24px 26px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.odo{font-weight:500;font-size:clamp(80px,10vw,168px);letter-spacing:-.06em;line-height:1;display:flex;font-variant-numeric:tabular-nums}
+.odo .dg{display:inline-block;height:1em;overflow:hidden}
+.odo .dg span{display:block;transition:transform 1.6s var(--ease-expo)}
+.odo .dg span b{display:block;height:1em;font-weight:500}
+.col p{color:var(--ink-sub);max-width:26ch}
+.src{margin-top:18px}
+@media (max-width:900px){
+  .cols{grid-template-columns:1fr;border-left:none;border-top:1px solid var(--stroke)}
+  .col{border-right:none;border-bottom:1px solid var(--stroke);min-height:0;gap:24px}
+}

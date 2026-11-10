@@ -1,0 +1,47 @@
+/* =========================================================
+   2. HERO — orbit of app fragments (signature, part 1)
+   ========================================================= */
+.hero{position:relative;height:100vh;min-height:720px;overflow:hidden;display:grid;place-items:center;text-align:center}
+.hero-glow{position:absolute;left:50%;bottom:-38vh;width:140vw;height:80vh;translate:-50% 0;background:radial-gradient(closest-side, rgba(185,232,204,.95), rgba(185,232,204,.35) 55%, transparent 100%);pointer-events:none}
+.hero-copy{position:relative;z-index:5;padding-inline:var(--margin);max-width:820px}
+.hero h1{font-weight:500;letter-spacing:-.04em;line-height:1;font-size:clamp(46px,6.2vw,104px);margin:22px 0 22px}
+.hero h1 .t{color:var(--teal)}
+.line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.line > span{display:block}
+.js-motion .hero .line > span{transform:translateY(108%)}
+.js-motion .hero .fade{opacity:0}
+.hero .lede{margin:0 auto;max-width:40ch}
+.hero-ctas{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+
+.frags{position:absolute;inset:0;z-index:3;pointer-events:none}
+.frag{position:absolute;will-change:transform}
+.frag .par{will-change:transform}
+.drift{animation:wx var(--dx,12s) ease-in-out infinite alternate, wy var(--dy,15s) ease-in-out infinite alternate}
+@keyframes wx{from{translate:-10px 0}to{translate:10px 0}}
+@keyframes wy{from{margin-top:-8px}to{margin-top:8px}}
+.d2 .drift{filter:blur(1.2px)}
+.d3 .drift{filter:blur(3px);opacity:.85}
+.tile-bg{position:absolute;inset:-18%;border-radius:32px;z-index:-1;filter:blur(18px);opacity:.9}
+.tb-a{background:radial-gradient(60% 60% at 30% 30%, #9FDCC3, transparent 70%), radial-gradient(60% 60% at 70% 70%, #7FC9CB, transparent 70%)}
+.tb-b{background:radial-gradient(60% 60% at 60% 30%, #C8EBD6, transparent 70%), radial-gradient(60% 60% at 30% 80%, #8ED3D2, transparent 70%)}
+.card{background:#fff;border-radius:20px;border:1px solid var(--stroke);padding:14px 16px;box-shadow:0 24px 48px -28px rgba(10,40,36,.35);text-align:left;font-size:.9375rem}
+.step-pill{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;border:2px solid #0EAF52;background:#fff;font-size:1.125rem}
+.step-pill b{font-weight:700;margin-right:4px}
+@media (max-width:1100px){
+  .f-like,.f-step{display:none}
+}
+@media (max-width:900px){
+  .hero{height:auto;min-height:0;padding:130px 0 0;display:flex;flex-direction:column;align-items:center}
+  .hero-copy{order:1}
+  .frags{order:2;width:100%}
+  .frags{position:relative;inset:auto;height:520px;margin-top:40px}
+  .frag:not(.f-phone){display:none}
+  .f-phone{width:44% !important;top:auto !important;bottom:-60px !important}
+  .f-choose{left:2% !important;rotate:-8deg;bottom:-120px !important}
+  .f-feed{left:28% !important;right:auto !important;z-index:2;bottom:-30px !important}
+  .f-certs{right:2% !important;left:auto !important;rotate:8deg;bottom:-120px !important}
+  .d2 .drift,.d3 .drift{filter:none;opacity:1}
+}
+@media (max-width:560px){
+  .frags{height:440px}
+}

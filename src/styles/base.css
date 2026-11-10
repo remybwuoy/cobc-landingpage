@@ -1,0 +1,106 @@
+/* CareConnect concept website — styles */
+/* =========================================================
+   1. TOKENS — CareConnect app brand (sampled from the app)
+   ========================================================= */
+:root{
+  --bg:#F7F9F8;
+  --surface:#FFFFFF;
+  --surface-2:#EEF3F1;
+  --ink:#0D1715;
+  --ink-sub:#4A5753;         /* 7.2:1 on bg */
+  --stroke:#DCE3E0;
+  --teal:#009094;            /* brand teal: UI + large text only (3.9:1) */
+  --teal-ink:#00747A;        /* teal for small text (5.5:1) */
+  --teal-soft:#DDF1F0;
+  --mint:#B9E8CC;            /* app glow */
+  --mint-soft:#E4F5EA;
+  --dark:#0A1917;
+  --on-dark:#E7F2EF;
+  --on-dark-sub:#9DB7B1;
+  --heart:#F43F5E;
+
+  --f:"Urbanist", system-ui, -apple-system, sans-serif;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:36px;
+  --margin:clamp(20px,4vw,64px);
+  --gutter:clamp(16px,1.6vw,24px);
+
+  --ease-expo:cubic-bezier(.19,1,.22,1);
+  --ease-quint:cubic-bezier(.22,1,.36,1);
+  --ease-back:cubic-bezier(.175,.885,.32,1.1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+
+  /* app screens, defined once and reused */
+  --scr-choose:url("../assets/images/screen-choose.jpg");
+  --scr-certs:url("../assets/images/screen-certifications.jpg");
+  --scr-feed:url("../assets/images/screen-feed.jpg");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:100%}
+html.lenis, html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:8px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{padding-inline:var(--margin);max-width:1560px;margin-inline:auto}
+.label{font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-sub)}
+.idx{font-size:.75rem;font-weight:600;color:var(--ink-sub);font-variant-numeric:tabular-nums}
+.h2{font-weight:500;letter-spacing:-.035em;line-height:1;font-size:clamp(40px,5.2vw,84px)}
+.h2 .t{color:var(--teal)}
+.lede{font-size:clamp(1.0625rem,1.3vw,1.25rem);color:var(--ink-sub);max-width:36ch}
+.note{font-size:.75rem;color:var(--ink-sub)}
+.grain{pointer-events:none;position:fixed;inset:0;z-index:300;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* screens */
+.scr{background-size:cover;background-position:top center;background-color:#fff}
+.scr-choose{background-image:var(--scr-choose)}
+.scr-certs{background-image:var(--scr-certs)}
+.scr-feed{background-image:var(--scr-feed)}
+.phone{position:relative;aspect-ratio:640/1387;border-radius:13% / 6%;background:#0D1715;padding:3.2%;box-shadow:0 2px 0 rgba(255,255,255,.4) inset, 0 40px 80px -36px rgba(10,40,36,.45), 0 0 0 1px rgba(13,23,21,.08)}
+.phone .scr{width:100%;height:100%;border-radius:11% / 5%;overflow:hidden}
+.phone::before{content:"";position:absolute;top:2.4%;left:50%;width:30%;height:3.4%;translate:-50% 0;border-radius:99px;background:#0D1715;z-index:2}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:1rem;cursor:pointer;transition:background .25s var(--ease-quint), transform .2s var(--ease-quint);will-change:transform}
+.btn:active{transform:scale(.97)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#000}
+.btn-ghost{border-color:var(--stroke);background:rgba(255,255,255,.6)}
+.btn-ghost:hover{background:#fff}
+.btn-sm{height:44px;padding:0 20px;font-size:.9375rem}
+.roll{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
+.roll > span{display:block;transition:transform .5s var(--ease-expo)}
+.roll > span::after{content:attr(data-text);display:block}
+.btn:hover .roll > span,.btn:focus-visible .roll > span{transform:translateY(-1.3em)}
+.btn .arrow{transition:transform .4s var(--ease-expo)}
+.btn:hover .arrow{transform:translateX(3px)}
+.ul{position:relative;display:inline-block}
+.ul::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease-expo)}
+.ul:hover::after,.ul:focus-visible::after{transform:scaleX(1);transform-origin:left}
+
+/* shared bits */
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--teal);color:var(--teal-ink);font-weight:600;font-size:.875rem;background:rgba(255,255,255,.7)}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.pill-chip{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 14px 0 18px;border-radius:999px;border:1.5px solid var(--stroke);background:#fff;font-size:1.0625rem;font-weight:500}
+.pill-chip svg{flex:none}
+.pill-chip.on{border-color:var(--teal);background:var(--teal-soft);color:#063f42}
+.meter{height:8px;border-radius:99px;background:repeating-linear-gradient(-45deg, rgba(0,144,148,.2) 0 2px, transparent 2px 7px), var(--surface-2);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:99px;background:var(--teal)}
+.sec-head{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gutter);align-items:end;margin-bottom:clamp(36px,5vw,72px)}
+.sec-head .label{grid-column:1 / -1;display:flex;gap:12px;align-items:center}
+.sec-head .label::after{content:"";flex:1;height:1px;background:var(--stroke)}
+.sec-head .h2{grid-column:1 / span 8}
+.sec-head .lede{grid-column:9 / span 4}
+.go{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--stroke);display:grid;place-items:center;transition:transform .5s var(--ease-expo), background .3s}
+
+@media (max-width:900px){
+  .sec-head .h2,.sec-head .lede{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .caret{display:none}
+}

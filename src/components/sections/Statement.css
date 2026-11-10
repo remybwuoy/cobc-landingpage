@@ -1,0 +1,7 @@
+/* =========================================================
+   4. STATEMENT — tonal paragraph with scrubbed fill
+   ========================================================= */
+.statement{padding-block:clamp(110px,14vw,220px)}
+.statement p.big{font-weight:500;font-size:clamp(30px,4vw,64px);line-height:1.1;letter-spacing:-.03em;max-width:24ch;margin-top:26px;color:var(--ink-sub)}
+.statement .lead{color:var(--ink)}
+.w{display:inline-block}

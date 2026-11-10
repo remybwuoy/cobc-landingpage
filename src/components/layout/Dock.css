@@ -1,0 +1,16 @@
+.dock.is-hidden{opacity:0;pointer-events:none;transform:translateY(40%)}
+/* App-style floating dock (from the app's bottom nav) */
+.dock{position:fixed;left:50%;bottom:20px;z-index:60;translate:-50% 0;width:max-content;display:flex;gap:6px;padding:7px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--stroke);box-shadow:0 20px 40px -24px rgba(10,40,36,.35);transition:transform .7s var(--ease-expo), opacity .4s}
+.dock.is-away{transform:translateY(140%);opacity:0}
+.dock a{position:relative;display:flex;align-items:center;gap:8px;height:52px;min-width:52px;padding:0 15px;border-radius:999px;border:1px solid var(--stroke);background:#fff;color:var(--ink);font-weight:600;font-size:.9375rem;transition:background .4s var(--ease-quint), color .4s, border-color .4s}
+.dock a span{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .6s var(--ease-expo), opacity .3s}
+.dock a.is-active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dock a.is-active span{max-width:110px;opacity:1}
+.dock a:hover:not(.is-active){background:var(--surface-2)}
+@media (max-width:900px){
+  .dock a{height:48px;min-width:48px;padding:0 13px}
+}
+@media (max-width:560px){
+  .dock{bottom:14px}
+  .dock a.is-active span{max-width:84px}
+}

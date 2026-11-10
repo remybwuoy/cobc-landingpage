@@ -1,0 +1,27 @@
+/* =========================================================
+   NAV + progressive edge blur
+   ========================================================= */
+.edge-blur{position:fixed;top:0;left:0;right:0;height:120px;z-index:40;pointer-events:none}
+.edge-blur i{position:absolute;inset:0}
+.edge-blur i:nth-child(1){backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);mask-image:linear-gradient(to bottom,#000 0%,#000 40%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,transparent 100%)}
+.edge-blur i:nth-child(2){backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);mask-image:linear-gradient(to bottom,#000 0%,#000 25%,transparent 70%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 25%,transparent 70%)}
+.edge-blur i:nth-child(3){backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);mask-image:linear-gradient(to bottom,#000 0%,transparent 45%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 45%)}
+.edge-blur i:nth-child(4){background:linear-gradient(to bottom,rgba(247,249,248,.75),rgba(247,249,248,0));opacity:0;transition:opacity .4s}
+.scrolled .edge-blur i:nth-child(4){opacity:1}
+.on-dark .edge-blur i:nth-child(4){background:linear-gradient(to bottom,rgba(10,25,23,.8),rgba(10,25,23,0))}
+.on-dark .logo .wm{color:var(--on-dark)}
+.on-dark .icon-btn{background:rgba(255,255,255,.1);border-color:rgba(231,242,239,.2);color:var(--on-dark)}
+.on-dark .nav .btn-ink{background:var(--on-dark);color:var(--dark)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.5rem;letter-spacing:-.03em}
+.logo img{width:40px;height:40px}
+.logo .wm{display:inline-flex;overflow:hidden;max-width:200px;transition:max-width .7s var(--ease-expo), opacity .4s}
+.logo .wm b{font-weight:600;color:var(--teal)}
+.scrolled.compact .logo .wm{max-width:0;opacity:0}
+.nav-right{display:flex;gap:10px;align-items:center}
+.icon-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--stroke);background:rgba(255,255,255,.7);display:grid;place-items:center;cursor:pointer;transition:background .25s}
+.icon-btn:hover{background:#fff}
+@media (max-width:900px){
+  .nav .btn-sm{display:none}
+}
