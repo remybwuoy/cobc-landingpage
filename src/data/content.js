@@ -111,7 +111,7 @@ export const trust = {
  * Where "Login / Sign up" goes. Placeholder: replace with the real app or auth URL.
  * Can also be set at build time with VITE_AUTH_URL in a .env file.
  */
-export const AUTH_URL = import.meta.env.VITE_AUTH_URL || 'https://example.com/login';
+export const AUTH_URL = import.meta.env.VITE_AUTH_URL || 'https://connect.joincareonboard.com/';
 export const AUTH_LABEL = 'Login / Sign up';
 
 /** Main menu: shown in the top bar over the hero, then docked at the bottom of the screen. */
@@ -187,5 +187,9 @@ export const footerLinks = {
   start: [
     { href: '#faq', label: 'FAQs' },
     { href: AUTH_URL, label: AUTH_LABEL },
+  ],
+  legal: [
+    { href: 'privacy', label: 'Privacy Policy' },
+    { href: 'terms', label: 'Terms & Conditions' },
   ],
 };

@@ -1,0 +1,15 @@
+# Apache: let the React app handle its own routes (/privacy, /terms).
+# Copied into dist/ by the build. Works at the domain root or in a subfolder.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # /privacy/ → /privacy (asset paths are relative, so a trailing slash would break them)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # Any path that isn't a real file or folder is served the app.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>

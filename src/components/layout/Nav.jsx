@@ -10,7 +10,7 @@ import './Nav.css';
  * Puts state classes on <html> that the CSS reads: `scrolled` (past 30px),
  * `compact` (past 160px: the wordmark collapses) and `on-dark` (a dark section sits under the bar).
  */
-export default function Nav() {
+export default function Nav({ homeHref = '#top' }) {
   useEffect(() => {
     const root = document.documentElement;
     let ticking = false;
@@ -41,7 +41,7 @@ export default function Nav() {
   return (
     <header className="nav" id="nav">
       <div className="wrap nav-inner">
-        <a href="#top" className="logo" aria-label={`${BRAND} home`}>
+        <a href={homeHref} className="logo" aria-label={`${BRAND} home`}>
           <img src={LOGO_SRC} alt="" width="445" height="506" />
           <span className="wm">CareOnboard<b>Connect</b></span>
         </a>
