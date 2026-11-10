@@ -1,0 +1,44 @@
+/* =========================================================
+   MENU — sits in the top bar over the hero, then docks at the bottom
+   (app-style floating dock, from the app's bottom nav)
+   ========================================================= */
+.menu{position:fixed;left:50%;z-index:60;translate:-50% 0;width:max-content;display:flex;gap:6px;padding:6px;border-radius:999px;background:var(--glass-strong);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--stroke);box-shadow:0 20px 40px -24px var(--shadow);transition:transform .7s var(--ease-expo), opacity .4s}
+.menu.is-top{top:13px}
+.menu.is-docked{bottom:20px;padding:7px}
+.menu.is-hidden{opacity:0;pointer-events:none;transform:translateY(40%)}
+
+/* the move: the bar leaves one edge and arrives from the other */
+.menu.has-moved.is-docked{animation:menu-rise .9s var(--ease-expo) backwards}
+.menu.has-moved.is-top{animation:menu-drop .9s var(--ease-expo) backwards}
+@keyframes menu-rise{from{transform:translateY(160%);opacity:0}}
+@keyframes menu-drop{from{transform:translateY(-160%);opacity:0}}
+
+.menu a{position:relative;display:flex;align-items:center;gap:8px;height:44px;min-width:44px;padding:0 13px;border-radius:999px;border:1px solid var(--stroke);background:var(--surface);color:var(--ink);font-weight:600;font-size:.9375rem;transition:background .4s var(--ease-quint), color .4s, border-color .4s, gap .6s var(--ease-expo)}
+.menu.is-docked a{height:52px;min-width:52px;padding:0 15px}
+.menu a svg{flex:none}
+.menu a span{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .6s var(--ease-expo), opacity .3s}
+.menu a:not(.is-active){gap:0}
+.menu a.is-active{background:var(--main-color);color:var(--on-main);border-color:var(--main-color)}
+.menu a:hover:not(.is-active){background:var(--surface-2)}
+
+/* docked, and the top bar on narrower screens: icons, with the active item's short label */
+.menu .full{display:none}
+.menu a.is-active .short{max-width:110px;opacity:1}
+
+/* top bar on wide screens: every item labelled (needs room beside the full wordmark) */
+@media (min-width:1280px){
+  .menu.is-top .short{display:none}
+  .menu.is-top .full{display:inline-block;max-width:140px;opacity:1}
+  .menu.is-top a{gap:8px;padding:0 16px 0 14px}
+}
+
+.on-dark .menu.is-top{border-color:rgba(231,242,239,.2)}
+
+@media (max-width:900px){
+  .menu.is-top{top:80px}
+  .menu.is-docked a{height:48px;min-width:48px;padding:0 13px}
+}
+@media (max-width:560px){
+  .menu.is-docked{bottom:14px}
+  .menu a.is-active .short{max-width:84px}
+}

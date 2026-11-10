@@ -4,20 +4,20 @@
 .story{position:relative;padding-block:clamp(56px,6vw,96px) 0}
 .story-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gutter)}
 .story-visual{grid-column:1 / span 6;position:sticky;top:9vh;height:82vh;min-height:560px;align-self:start}
-.stage{position:relative;height:100%;border-radius:var(--r-xl);overflow:hidden;background:radial-gradient(70% 55% at 50% 100%, rgba(185,232,204,.95), rgba(185,232,204,.2) 60%, transparent), linear-gradient(180deg,#F1F6F4,#E6F1EC);display:grid;place-items:center;perspective:1200px}
-.stage .ring{position:absolute;border-radius:50%;border:1px solid rgba(0,144,148,.16);left:50%;top:52%;translate:-50% -50%}
+.stage{position:relative;height:100%;border-radius:var(--r-xl);overflow:hidden;background:radial-gradient(70% 55% at 50% 100%, var(--glow-strong), var(--glow-faint) 60%, transparent), linear-gradient(180deg,var(--stage-a),var(--stage-b));display:grid;place-items:center;perspective:1200px}
+.stage .ring{position:absolute;border-radius:50%;border:1px solid rgba(0,180,184,.16);left:50%;top:52%;translate:-50% -50%}
 .stage-phone{position:relative;z-index:2;height:86%;transform-style:preserve-3d;will-change:transform;transition:transform .6s var(--ease-quint)}
 .stage-phone .phone{height:100%}
 .layers{position:absolute;inset:3.2%;border-radius:11% / 5%;overflow:hidden}
 .layers .scr{position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--ease-expo)}
 .layers .scr.on{clip-path:inset(0 0 0 0)}
-.callout{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;font-size:.875rem;font-weight:600;white-space:nowrap;opacity:0;transform:translateY(10px) scale(.92);transition:opacity .35s, transform .6s var(--ease-back)}
+.callout{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--on-ink);font-size:.875rem;font-weight:600;white-space:nowrap;opacity:0;transform:translateY(10px) scale(.92);transition:opacity .35s, transform .6s var(--ease-back)}
 .callout i{width:8px;height:8px;border-radius:50%;background:var(--mint)}
 .callout.on{opacity:1;transform:none}
-.callout.light{background:#fff;color:var(--ink);border:1px solid var(--stroke)}
+.callout.light{background:var(--surface);color:var(--ink);border:1px solid var(--stroke)}
 .callout.light i{background:var(--teal)}
 .progress{position:absolute;left:24px;top:22px;z-index:3;display:flex;align-items:center;gap:12px;font-weight:600;font-size:.875rem;font-variant-numeric:tabular-nums}
-.progress .bar{width:120px;height:4px;border-radius:9px;background:rgba(13,23,21,.1);overflow:hidden}
+.progress .bar{width:120px;height:4px;border-radius:9px;background:var(--stroke);overflow:hidden}
 .progress .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(.333);transition:transform .7s var(--ease-expo)}
 .story-steps{grid-column:8 / span 5;list-style:none}
 .st{padding-top:clamp(60px,22vh,240px);opacity:.3;transition:opacity .6s var(--ease-quint)}
@@ -32,12 +32,14 @@
 .st li{display:flex;gap:10px;align-items:center;font-weight:500}
 .st li::before{content:"";width:18px;height:18px;flex:none;border-radius:50%;background:var(--teal-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l2.6 2.6L9 1' stroke='%23006a6e' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") center no-repeat}
 .m-phone{display:none}
+[data-theme="dark"] .st li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l2.6 2.6L9 1' stroke='%23B9EDEB' stroke-width='1.6' fill='none'/%3E%3C/svg%3E")}
+[data-theme="dark"] .callout i{background:var(--teal)}
 @media (max-width:900px){
   .story-visual{display:none}
   .story-steps{grid-column:1 / -1}
   .st{opacity:1;padding-top:72px}
   .st:first-child{padding-top:0}
   .st:last-child{padding-bottom:0}
-  .m-phone{display:block;margin-top:28px;border-radius:var(--r-xl);padding:36px 0 0;overflow:hidden;height:440px;background:radial-gradient(70% 55% at 50% 100%, rgba(185,232,204,.95), transparent), #EEF4F1}
+  .m-phone{display:block;margin-top:28px;border-radius:var(--r-xl);padding:36px 0 0;overflow:hidden;height:440px;background:radial-gradient(70% 55% at 50% 100%, var(--glow-strong), transparent), var(--stage-a)}
   .m-phone .phone{width:62%;margin:0 auto}
 }

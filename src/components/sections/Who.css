@@ -9,7 +9,7 @@
 .row .roles{font-size:.9375rem;color:var(--ink-sub)}
 .row .go{width:52px;height:52px}
 .row a:hover h3,.row a:focus-visible h3{transform:translateX(14px);color:var(--teal)}
-.row a:hover .go{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(-45deg)}
+.row a:hover .go{background:var(--ink);border-color:var(--ink);color:var(--on-ink);transform:rotate(-45deg)}
 .preview{position:fixed;left:0;top:0;z-index:45;width:300px;padding:22px;border-radius:var(--r-lg);background:var(--dark);color:var(--on-dark);pointer-events:none;opacity:0;scale:.85;transition:opacity .3s, scale .5s var(--ease-back)}
 .preview.is-on{opacity:1;scale:1}
 .preview .big{font-weight:600;font-size:4rem;line-height:1;letter-spacing:-.05em;color:var(--mint)}

@@ -5,6 +5,7 @@ import { HeartIcon, PlusCircleIcon, CheckCircleIcon } from '../ui/Icons';
 import { useGsap } from '../../hooks/useGsap';
 import { gsap, EXPO } from '../../lib/gsap';
 import { pointerFx } from '../../lib/env';
+import { AUTH_URL, AUTH_LABEL } from '../../data/content';
 import './Hero.css';
 
 /*
@@ -44,11 +45,11 @@ const fragments = [
     style: { left: '6%', top: '66%' },
     content: (
       <div className="card" style={{ width: 250 }}>
-        <div className="note">Job match · Behavior agency</div>
-        <div style={{ fontWeight: 600, fontSize: '1.0625rem', margin: '3px 0 10px' }}>Behavior Technician (RBT)</div>
-        <div className="meter"><i style={{ width: '92%' }} /></div>
+        <div className="note">Application · Home care agency</div>
+        <div style={{ fontWeight: 600, fontSize: '1.0625rem', margin: '3px 0 10px' }}>Registered Nurse (RN)</div>
+        <div className="meter"><i style={{ width: '66%' }} /></div>
         <div className="note" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-          <span>Match</span><b style={{ color: 'var(--ink)' }}>92%</b>
+          <span>Stage 2 of 3</span><b style={{ color: 'var(--ink)' }}>Interview</b>
         </div>
       </div>
     ),
@@ -69,12 +70,12 @@ const fragments = [
     content: <Phone screen="feed" rotate="-3deg" />,
   },
   {
-    key: 'copilot', depth: 2, out: [1, 0.8], dx: '17s', dy: '12s',
+    key: 'treasure', depth: 2, out: [1, 0.8], dx: '17s', dy: '12s',
     style: { right: '3%', top: '70%' },
     content: (
       <div className="card" style={{ width: 240, background: 'var(--dark)', color: 'var(--on-dark)', borderColor: 'transparent' }}>
-        <div style={{ fontSize: '.75rem', color: 'var(--on-dark-sub)' }}>✦ CareConnect Copilot</div>
-        <div style={{ marginTop: 4, lineHeight: 1.4 }}>Your BLS expires in 30 days. Want a renewal class nearby?</div>
+        <div style={{ fontSize: '.75rem', color: 'var(--on-dark-sub)' }}>✦ Treasure received</div>
+        <div style={{ marginTop: 4, lineHeight: 1.4 }}>A colleague sent you a treasure. Cowries added to your earnings.</div>
       </div>
     ),
   },
@@ -151,7 +152,7 @@ export default function Hero() {
         </h1>
         <p className="lede fade">Find opportunities, connect with professionals, access healthcare and grow your future.</p>
         <div className="hero-ctas fade">
-          <Button href="#join" label="Get early access" magnetic arrow />
+          <Button href={AUTH_URL} label={AUTH_LABEL} magnetic arrow />
           <Button href="#app" label="See the app" variant="ghost" />
         </div>
       </div>

@@ -9,8 +9,27 @@ export const ArrowIcon = ({ className }) => (
   </svg>
 );
 
-export const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" {...stroke}><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+export const QuestionIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" {...stroke}>
+    <circle cx="12" cy="12" r="9" /><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.7" /><path d="M12 17.2v.1" strokeLinecap="round" strokeWidth="2.4" />
+  </svg>
+);
+
+/** Sun and moon drawn together; CSS shows one per theme and turns between them. */
+export const ThemeIcon = () => (
+  <svg className="theme-ico" width="20" height="20" viewBox="0 0 24 24" {...stroke}>
+    <g className="sun">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" strokeLinecap="round" />
+    </g>
+    <path className="moon" d="M20 14.2A8 8 0 0 1 9.8 4a8 8 0 1 0 10.2 10.2z" />
+  </svg>
+);
+
+export const ArrowUpIcon = ({ className }) => (
+  <svg className={className} width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" strokeWidth="1.6" fill="none" />
+  </svg>
 );
 
 export const HomeIcon = () => (

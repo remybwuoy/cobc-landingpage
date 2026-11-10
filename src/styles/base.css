@@ -1,7 +1,4 @@
-/* CareConnect concept website — styles */
-/* =========================================================
-   1. TOKENS — CareConnect app brand (sampled from the app)
-   ========================================================= */
+/* CareOnboardConnect website — styles */
 :root{
   --bg:#F7F9F8;
   --surface:#FFFFFF;
@@ -9,7 +6,10 @@
   --ink:#0D1715;
   --ink-sub:#4A5753;         /* 7.2:1 on bg */
   --stroke:#DCE3E0;
-  --teal:#009094;            /* brand teal: UI + large text only (3.9:1) */
+  --main-color:#00b4b8;      /* brand colour: buttons, active menu item, accents */
+  --main-hover:#00a0a4;
+  --on-main:#FFFFFF;         /* text on main-color fills */
+  --teal:var(--main-color);  /* brand teal: UI + large text only */
   --teal-ink:#00747A;        /* teal for small text (5.5:1) */
   --teal-soft:#DDF1F0;
   --mint:#B9E8CC;            /* app glow */
@@ -18,6 +18,21 @@
   --on-dark:#E7F2EF;
   --on-dark-sub:#9DB7B1;
   --heart:#F43F5E;
+
+  /* theme roles (redefined for dark mode below) */
+  --on-ink:#FFFFFF;          /* text on ink-filled buttons and pills */
+  --ink-hover:#000000;
+  --teal-on-soft:#063F42;    /* text on teal-soft */
+  --glass:rgba(255,255,255,.7);
+  --glass-strong:rgba(255,255,255,.82);
+  --veil:247 249 248;        /* bg as RGB channels, for the fade under the nav */
+  --shadow:rgba(10,40,36,.35);
+  --glow-strong:rgba(185,232,204,.95);
+  --glow-mid:rgba(185,232,204,.35);
+  --glow-faint:rgba(185,232,204,.2);
+  --stage-a:#F1F6F4;
+  --stage-b:#E6F1EC;
+    color-scheme:light;
 
   --f:"Urbanist", system-ui, -apple-system, sans-serif;
   --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:36px;
@@ -34,6 +49,35 @@
   --scr-certs:url("../assets/images/screen-certifications.jpg");
   --scr-feed:url("../assets/images/screen-feed.jpg");
 }
+/* Dark mode. index.html sets data-theme before first paint: the saved choice, else the OS setting. */
+:root[data-theme="dark"]{
+  --bg:#0B1513;
+  --surface:#111E1B;
+  --surface-2:#182824;
+  --ink:#E7F2EF;
+  --ink-sub:#9DB7B1;         /* 8.6:1 on bg */
+  --stroke:#223430;
+  --teal-ink:#4CC9C9;        /* 8.4:1 on bg */
+  --teal-soft:#0E3433;
+  --teal-on-soft:#B9EDEB;
+  --mint-soft:#15302A;
+  --dark:#050C0B;            /* dark sections sit a step below the page */
+  --on-ink:#0B1513;
+  --ink-hover:#FFFFFF;
+  --glass:rgba(17,30,27,.7);
+  --glass-strong:rgba(17,30,27,.84);
+  --veil:11 21 19;
+  --shadow:rgba(0,0,0,.6);
+  --glow-strong:rgba(0,180,184,.42);
+  --glow-mid:rgba(0,180,184,.14);
+  --glow-faint:rgba(0,180,184,.1);
+  --stage-a:#12221F;
+  --stage-b:#0D1A17;
+  color-scheme:dark;
+}
+/* the new theme spreads in a circle from the toggle (see lib/theme.js) */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:100%}
 html.lenis, html.lenis body{height:auto}
@@ -43,6 +87,7 @@ img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,select{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:8px}
+:root[data-theme="dark"] .grain{opacity:.05}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{padding-inline:var(--margin);max-width:1560px;margin-inline:auto}
 .label{font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-sub)}
@@ -51,14 +96,14 @@ button,input,select{font:inherit;color:inherit}
 .h2 .t{color:var(--teal)}
 .lede{font-size:clamp(1.0625rem,1.3vw,1.25rem);color:var(--ink-sub);max-width:36ch}
 .note{font-size:.75rem;color:var(--ink-sub)}
-.grain{pointer-events:none;position:fixed;inset:0;z-index:300;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain{transition:opacity .4s;pointer-events:none;position:fixed;inset:0;z-index:300;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* screens */
 .scr{background-size:cover;background-position:top center;background-color:#fff}
 .scr-choose{background-image:var(--scr-choose)}
 .scr-certs{background-image:var(--scr-certs)}
 .scr-feed{background-image:var(--scr-feed)}
-.phone{position:relative;aspect-ratio:640/1387;border-radius:13% / 6%;background:#0D1715;padding:3.2%;box-shadow:0 2px 0 rgba(255,255,255,.4) inset, 0 40px 80px -36px rgba(10,40,36,.45), 0 0 0 1px rgba(13,23,21,.08)}
+.phone{position:relative;aspect-ratio:640/1387;border-radius:13% / 6%;background:#0D1715;padding:3.2%;box-shadow:0 2px 0 rgba(255,255,255,.4) inset, 0 40px 80px -36px var(--shadow), 0 0 0 1px rgba(13,23,21,.08)}
 .phone .scr{width:100%;height:100%;border-radius:11% / 5%;overflow:hidden}
 .phone::before{content:"";position:absolute;top:2.4%;left:50%;width:30%;height:3.4%;translate:-50% 0;border-radius:99px;background:#0D1715;z-index:2}
 
@@ -67,10 +112,10 @@ button,input,select{font:inherit;color:inherit}
    ========================================================= */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:1rem;cursor:pointer;transition:background .25s var(--ease-quint), transform .2s var(--ease-quint);will-change:transform}
 .btn:active{transform:scale(.97)}
-.btn-ink{background:var(--ink);color:#fff}
-.btn-ink:hover{background:#000}
-.btn-ghost{border-color:var(--stroke);background:rgba(255,255,255,.6)}
-.btn-ghost:hover{background:#fff}
+.btn-ink{background:var(--main-color);color:var(--on-main)}
+.btn-ink:hover{background:var(--main-hover)}
+.btn-ghost{border-color:var(--stroke);background:var(--glass)}
+.btn-ghost:hover{background:var(--surface)}
 .btn-sm{height:44px;padding:0 20px;font-size:.9375rem}
 .roll{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
 .roll > span{display:block;transition:transform .5s var(--ease-expo)}
@@ -83,12 +128,12 @@ button,input,select{font:inherit;color:inherit}
 .ul:hover::after,.ul:focus-visible::after{transform:scaleX(1);transform-origin:left}
 
 /* shared bits */
-.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--teal);color:var(--teal-ink);font-weight:600;font-size:.875rem;background:rgba(255,255,255,.7)}
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--teal);color:var(--teal-ink);font-weight:600;font-size:.875rem;background:var(--glass)}
 .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
-.pill-chip{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 14px 0 18px;border-radius:999px;border:1.5px solid var(--stroke);background:#fff;font-size:1.0625rem;font-weight:500}
+.pill-chip{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 14px 0 18px;border-radius:999px;border:1.5px solid var(--stroke);background:var(--surface);font-size:1.0625rem;font-weight:500}
 .pill-chip svg{flex:none}
-.pill-chip.on{border-color:var(--teal);background:var(--teal-soft);color:#063f42}
-.meter{height:8px;border-radius:99px;background:repeating-linear-gradient(-45deg, rgba(0,144,148,.2) 0 2px, transparent 2px 7px), var(--surface-2);overflow:hidden}
+.pill-chip.on{border-color:var(--teal);background:var(--teal-soft);color:var(--teal-on-soft)}
+.meter{height:8px;border-radius:99px;background:repeating-linear-gradient(-45deg, rgba(0,180,184,.2) 0 2px, transparent 2px 7px), var(--surface-2);overflow:hidden}
 .meter i{display:block;height:100%;border-radius:99px;background:var(--teal)}
 .sec-head{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gutter);align-items:end;margin-bottom:clamp(36px,5vw,72px)}
 .sec-head .label{grid-column:1 / -1;display:flex;gap:12px;align-items:center}

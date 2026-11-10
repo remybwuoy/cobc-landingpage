@@ -60,7 +60,7 @@ export default function Story() {
     <section className="story wrap" id="app" aria-labelledby="appH">
       <SectionHead idx="01" label="The app" id="appH"
         title={<>Three taps from<br />sign-up to <span className="t">belonging.</span></>}
-        lede="These are real screens from the CareConnect build. Scroll to walk through them." />
+        lede="These are real screens from the CareOnboardConnect build. Scroll to walk through them." />
 
       <div className="story-grid">
         <div className="story-visual" aria-hidden="true">

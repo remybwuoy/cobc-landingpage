@@ -12,7 +12,7 @@ export default function CertsTile() {
 
   return (
     <Tile size="21">
-      <TileHead title="Certifications in a tap" text="Pick what you hold. Employers see it on your profile." arrow />
+      <TileHead title="Certifications in a tap" text="Pick what you hold and upload proof. Agencies see it on your profile." arrow />
       <div>
         <div className="chipset" role="group" aria-label="Try it: select certifications">
           {certifications.map((c) => {

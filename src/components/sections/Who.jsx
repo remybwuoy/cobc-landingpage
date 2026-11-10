@@ -4,7 +4,7 @@ import { ArrowIcon } from '../ui/Icons';
 import { useGsap } from '../../hooks/useGsap';
 import { gsap, EXPO } from '../../lib/gsap';
 import { pointerFx } from '../../lib/env';
-import { audiences } from '../../data/content';
+import { audiences, AUTH_URL } from '../../data/content';
 import './Who.css';
 
 const pad = (n) => String(n).padStart(2, '0');
@@ -44,13 +44,13 @@ export default function Who() {
       <section className="who" id="who" aria-labelledby="whoH">
         <div className="wrap">
           <SectionHead idx="04" label="Who it's for" id="whoH"
-            title={<>Built for everyone<br />who makes <span className="t">care</span> work.</>} />
+            title={<>Three ways to join.<br />One <span className="t">community.</span></>} />
           <ul className="rows" ref={listRef}>
             {audiences.map((a, i) => {
               const n = pad(i + 1);
               return (
                 <li key={a.title} className="row" {...rowHandlers(n, a.preview)}>
-                  <a href="#join">
+                  <a href={AUTH_URL}>
                     <span className="idx">{n}</span>
                     <h3>{a.title}</h3>
                     <span className="roles">{a.roles}</span>

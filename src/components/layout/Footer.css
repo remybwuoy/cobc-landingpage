@@ -2,10 +2,12 @@
    10. FOOTER — ghost wordmark
    ========================================================= */
 .footer{background:var(--dark);color:var(--on-dark);padding-top:clamp(64px,8vw,120px);padding-bottom:110px;overflow:hidden;border-radius:var(--r-xl) var(--r-xl) 0 0;position:relative}
-.footer::before{content:"";position:absolute;right:-20%;top:-40%;width:80%;height:120%;background:radial-gradient(closest-side, rgba(0,144,148,.35), transparent);pointer-events:none}
+.footer::before{content:"";position:absolute;right:-20%;top:-40%;width:80%;height:120%;background:radial-gradient(closest-side, rgba(0,180,184,.35), transparent);pointer-events:none}
 .footer > *{position:relative}
 .foot-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gutter)}
-.foot-grid .lede{grid-column:1 / span 5;color:var(--on-dark-sub)}
+.foot-brand{grid-column:1 / span 5}
+.foot-brand img{height:56px;width:auto;margin-bottom:22px}
+.foot-grid .lede{color:var(--on-dark-sub)}
 .foot-col{grid-column:span 2}
 .foot-col:first-of-type{grid-column:8 / span 2}
 .foot-col h4{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-sub);font-weight:600;margin-bottom:14px}
@@ -13,9 +15,16 @@
 .foot-col a{display:inline-flex;min-height:32px;align-items:center}
 .wordmark{font-weight:600;letter-spacing:-.06em;line-height:.8;font-size:14vw;margin-top:clamp(56px,8vw,120px);white-space:nowrap;display:flex;padding-bottom:.08em;color:rgba(231,242,239,.08)}
 .wordmark span{display:inline-block}
-.wordmark .c{color:rgba(0,144,148,.38)}
-.foot-bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(231,242,239,.14);font-size:.8125rem;color:var(--on-dark-sub)}
+.wordmark .c{color:rgba(0,180,184,.38)}
+.foot-bar{display:flex;justify-content:space-between;align-items:center;gap:10px 24px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(231,242,239,.14);font-size:.8125rem;color:var(--on-dark-sub)}
+.made{display:inline-flex;align-items:center;gap:6px}
+.made-heart{display:inline-flex;color:var(--heart);animation:beat 1.6s var(--ease-quint) infinite}
+.made-heart svg{width:15px;height:15px}
+@keyframes beat{0%,40%,100%{transform:scale(1)}15%{transform:scale(1.25)}25%{transform:scale(.95)}}
+@media (max-width:640px){
+  .footer{padding-bottom:150px}  /* clear the lifted back-to-top button */
+}
 @media (max-width:900px){
-  .foot-grid .lede{grid-column:1 / -1}
+  .foot-brand{grid-column:1 / -1}
   .foot-col,.foot-col:first-of-type{grid-column:span 6;margin-top:24px}
 }
