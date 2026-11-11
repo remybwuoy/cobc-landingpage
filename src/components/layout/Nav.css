@@ -38,7 +38,7 @@
   .nav .btn-sm{padding:0 16px;font-size:.875rem}
 }
 /* the wordmark would run into the centred menu here, so show the mark alone */
-@media (min-width:901px) and (max-width:1000px){
+@media (min-width:901px) and (max-width:1080px){
   .logo .wm{display:none}
 }
 @media (max-width:480px){

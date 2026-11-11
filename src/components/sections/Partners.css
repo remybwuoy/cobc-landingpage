@@ -1,0 +1,30 @@
+/* =========================================================
+   PARTNERS — endless logo slider
+   ========================================================= */
+.partners{padding-block:clamp(110px,12vw,180px) clamp(40px,5vw,72px);overflow:hidden}
+
+/* the rail spans the full width; its edges fade out */
+.partners-rail{position:relative;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}
+.partners-track{list-style:none;display:flex;gap:16px;width:max-content;padding-block:14px;animation:partners-slide var(--dur,60s) linear infinite}
+@keyframes partners-slide{to{transform:translateX(calc(-50% - 8px))}}  /* half the track plus half a gap */
+.partners-rail:hover .partners-track,.partners-rail:focus-within .partners-track,.partners-rail.is-paused .partners-track{animation-play-state:paused}
+
+.partner{flex:none}
+.partner > a,.partner-tile{display:grid;place-items:center;width:clamp(180px,16vw,240px);height:clamp(96px,8vw,120px);padding:20px 28px;border-radius:var(--r-lg);border:1px solid var(--stroke);background:var(--logo-tile);transition:transform .5s var(--ease-quint), box-shadow .5s var(--ease-quint), border-color .3s}
+.partner img{max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .4s, opacity .4s}
+.partner:hover > a,.partner:hover .partner-tile,.partner > a:focus-visible{transform:translateY(-4px);box-shadow:0 24px 44px -28px var(--shadow);border-color:var(--teal)}
+.partner:hover img,.partner > a:focus-visible img{filter:none;opacity:1}
+
+/* reduced motion: one still, centred, wrapping row */
+.partners-rail.is-still{mask-image:none;-webkit-mask-image:none;padding-inline:var(--margin)}
+.partners-rail.is-still .partners-track{width:auto;flex-wrap:wrap;justify-content:center;animation:none}
+
+.partners-ctrl{display:flex;justify-content:flex-end;margin-top:18px}
+.partners-toggle{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--stroke);background:var(--glass);font-weight:600;font-size:.875rem;color:var(--ink-sub);cursor:pointer;transition:background .25s, color .25s}
+.partners-toggle:hover{background:var(--surface);color:var(--ink)}
+
+@media (max-width:560px){
+  .partners-track{gap:12px}
+  @keyframes partners-slide{to{transform:translateX(calc(-50% - 6px))}}
+  .partners-ctrl{justify-content:center}
+}

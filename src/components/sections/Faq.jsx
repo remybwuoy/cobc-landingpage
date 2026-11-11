@@ -51,7 +51,7 @@ export default function Faq() {
   return (
     <section className="faq" id="faq" aria-labelledby="faqH">
       <div className="wrap">
-        <SectionHead idx="07" label="FAQs" id="faqH"
+        <SectionHead idx="08" label="FAQs" id="faqH"
           title={<>Questions,<br /><span className="t">answered.</span></>}
           lede="Accounts, jobs, Cowries and treasures, telehealth, and how your information is kept safe." />
         <ul className="faq-list" ref={listRef}>

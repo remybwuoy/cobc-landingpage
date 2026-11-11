@@ -6,6 +6,7 @@ import Platform from '../components/sections/Platform';
 import Who from '../components/sections/Who';
 import Stats from '../components/sections/Stats';
 import Trust from '../components/sections/Trust';
+import Partners from '../components/sections/Partners';
 import Faq from '../components/sections/Faq';
 
 /** The landing page: the moving menu and every section. */
@@ -21,6 +22,7 @@ export default function HomePage() {
         <Who />
         <Stats />
         <Trust />
+        <Partners />
         <Faq />
       </main>
     </>

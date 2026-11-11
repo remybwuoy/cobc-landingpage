@@ -32,6 +32,7 @@
   --glow-faint:rgba(185,232,204,.2);
   --stage-a:#F1F6F4;
   --stage-b:#E6F1EC;
+  --logo-tile:#FFFFFF;       /* partner logo tiles stay light so any logo reads on them */
     color-scheme:light;
 
   --f:"Urbanist", system-ui, -apple-system, sans-serif;
@@ -73,6 +74,7 @@
   --glow-faint:rgba(0,180,184,.1);
   --stage-a:#12221F;
   --stage-b:#0D1A17;
+  --logo-tile:#E9F1EE;
   color-scheme:dark;
 }
 /* the new theme spreads in a circle from the toggle (see lib/theme.js) */
