@@ -120,13 +120,31 @@ export const menuLinks = [
   { sec: 'app', href: '#app', label: 'The app', icon: 'phone' },
   { sec: 'platform', href: '#platform', label: 'Platform', icon: 'grid' },
   { sec: 'who', href: '#who', label: "Who it's for", short: 'Who', icon: 'people' },
+  { sec: 'partners', href: '#partners', label: 'Partners', icon: 'partners' },
   { sec: 'faq', href: '#faq', label: 'FAQs', icon: 'question' },
 ];
 
 /** Section element id → menu item it lights up. */
 export const menuSections = [
   ['hero', 'top'], ['app', 'app'], ['platform', 'platform'], ['who', 'who'],
-  ['stats', 'who'], ['trust', 'who'], ['faq', 'faq'],
+  ['stats', 'who'], ['trust', 'who'], ['partners', 'partners'], ['faq', 'faq'],
+];
+
+/**
+ * Partners carousel.
+ *
+ * To add a partner: put its logo in src/assets/partners/ (SVG, PNG, WebP or JPG) and add an entry
+ * here with the file name (letter case doesn't matter). `name` is the logo's alt text; `href` is
+ * optional (the logo becomes a link). Any logo file in that folder that isn't listed here still
+ * appears, named after its file. The slider shows logos only: an entry whose file can't be found
+ * is skipped (and reported in the browser console during development).
+ */
+export const partners = [
+  { name: 'Flutterwave', logo: 'Flutterwave-Logo.webp', href: 'https://flutterwave.com' },
+  { name: 'MTN', logo: 'mtn-logo.svg', href: 'https://mtn.com' },
+  { name: 'AirtelTigo', logo: 'AirtelTigo-Logo.webp', href: 'https://airteltigo.com' },
+  { name: 'GLO', logo: 'GLO-Logo.webp', href: 'https://glo.com' },
+  // { name: 'Partner five' },
 ];
 
 /** FAQ accordion, written from the current feature list. */
@@ -183,6 +201,7 @@ export const footerLinks = {
     { href: '#platform', label: 'Platform' },
     { href: '#who', label: "Who it's for" },
     { href: '#trust', label: 'Trust' },
+    { href: '#partners', label: 'Partners' },
   ],
   start: [
     { href: '#faq', label: 'FAQs' },

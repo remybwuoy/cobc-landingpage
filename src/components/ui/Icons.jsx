@@ -9,6 +9,19 @@ export const ArrowIcon = ({ className }) => (
   </svg>
 );
 
+/** Two linked rings: partnership. */
+export const PartnersIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" {...stroke}><circle cx="9" cy="12" r="5.5" /><circle cx="15" cy="12" r="5.5" /></svg>
+);
+
+export const PauseIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9M10 2.5v9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+);
+
+export const PlayIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2v9.6L11.5 7z" fill="currentColor" /></svg>
+);
+
 export const QuestionIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" {...stroke}>
     <circle cx="12" cy="12" r="9" /><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.7" /><path d="M12 17.2v.1" strokeLinecap="round" strokeWidth="2.4" />

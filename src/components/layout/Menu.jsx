@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { HomeIcon, PhoneIcon, GridIcon, PeopleIcon, QuestionIcon } from '../ui/Icons';
+import { HomeIcon, PhoneIcon, GridIcon, PeopleIcon, PartnersIcon, QuestionIcon } from '../ui/Icons';
 import { menuLinks, menuSections } from '../../data/content';
 import './Menu.css';
 
-const icons = { home: HomeIcon, phone: PhoneIcon, grid: GridIcon, people: PeopleIcon, question: QuestionIcon };
+const icons = { home: HomeIcon, phone: PhoneIcon, grid: GridIcon, people: PeopleIcon, partners: PartnersIcon, question: QuestionIcon };
 
 /** True once the first section after the hero reaches 60% down the viewport. */
 const pastHero = () => {
@@ -62,8 +62,9 @@ export default function Menu() {
         const Icon = icons[icon];
         const on = active === sec;
         return (
+          // data-tip feeds the hover/focus name bubble; data-same marks items whose short label is already the full name.
           <a key={sec} href={href} className={on ? 'is-active' : undefined} aria-label={label}
-            aria-current={on ? 'location' : undefined}>
+            aria-current={on ? 'location' : undefined} data-tip={label} data-same={!short || undefined}>
             <Icon />
             <span className="full">{label}</span>
             <span className="short" aria-hidden="true">{short || label}</span>

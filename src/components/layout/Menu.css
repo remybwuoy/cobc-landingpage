@@ -2,7 +2,7 @@
    MENU — sits in the top bar over the hero, then docks at the bottom
    (app-style floating dock, from the app's bottom nav)
    ========================================================= */
-.menu{position:fixed;left:50%;z-index:60;translate:-50% 0;width:max-content;display:flex;gap:6px;padding:6px;border-radius:999px;background:var(--glass-strong);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--stroke);box-shadow:0 20px 40px -24px var(--shadow);transition:transform .7s var(--ease-expo), opacity .4s}
+.menu{position:fixed;left:50%;z-index:62;translate:-50% 0;width:max-content;display:flex;gap:6px;padding:6px;border-radius:999px;background:var(--glass-strong);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--stroke);box-shadow:0 20px 40px -24px var(--shadow);transition:transform .7s var(--ease-expo), opacity .4s}
 .menu.is-top{top:13px}
 .menu.is-docked{bottom:20px;padding:7px}
 .menu.is-hidden{opacity:0;pointer-events:none;transform:translateY(40%)}
@@ -29,11 +29,23 @@
 .menu a.is-active .short{max-width:110px;opacity:1}
 
 /* top bar on wide screens: every item labelled (needs room beside the full wordmark) */
-@media (min-width:1280px){
+@media (min-width:1400px){
   .menu.is-top .short{display:none}
   .menu.is-top .full{display:inline-block;max-width:140px;opacity:1}
   .menu.is-top a{gap:8px;padding:0 16px 0 14px}
 }
+
+/* name bubble on hover / keyboard focus: below the top bar, above the dock */
+.menu a::after{content:attr(data-tip);position:absolute;left:50%;z-index:1;padding:6px 11px;border-radius:10px;background:var(--ink);color:var(--on-ink);font-size:.8125rem;font-weight:600;line-height:1.2;white-space:nowrap;box-shadow:0 12px 28px -14px var(--shadow);pointer-events:none;opacity:0;translate:-50% 0;transition:opacity .2s, transform .35s var(--ease-quint)}
+.menu.is-top a::after{top:calc(100% + 10px);transform:translateY(-4px)}
+.menu.is-docked a::after{bottom:calc(100% + 12px);transform:translateY(4px)}
+@media (hover:hover){
+  .menu a:hover::after{opacity:1;transform:none}
+}
+.menu a:focus-visible::after{opacity:1;transform:none}
+/* the active item already shows its name, unless its short label is shorter than the full one */
+.menu a.is-active[data-same]::after{display:none}
+@media (min-width:1400px){ .menu.is-top a::after{display:none} } /* every label visible */
 
 .on-dark .menu.is-top{border-color:rgba(231,242,239,.2)}
 
@@ -44,4 +56,23 @@
 @media (max-width:560px){
   .menu.is-docked{bottom:14px}
   .menu a.is-active .short{max-width:84px}
+}
+/* six items must fit a 360–390px phone */
+@media (max-width:440px){
+  .menu{gap:4px;padding:5px}
+  .menu.is-docked{padding:5px}
+  .menu a,.menu.is-docked a{height:44px;min-width:42px;padding:0 11px}
+  .menu a.is-active .short{max-width:70px}
+}
+@media (max-width:380px){
+  .menu,.menu.is-docked{gap:3px;padding:4px}
+  .menu a,.menu.is-docked a{min-width:39px;padding:0 9px}
+  .menu a.is-active{gap:6px}
+  .menu a.is-active .short{max-width:62px}
+}
+/* very small phones: icons only (the active item is still filled) */
+@media (max-width:340px){
+  .menu a.is-active{gap:0}
+  .menu a.is-active .short{max-width:0;opacity:0}
+  .menu a.is-active[data-same]::after{display:block}
 }
