@@ -16,6 +16,7 @@ only: an entry whose file can't be found is skipped, and a warning naming the mi
 appears in the browser console while running `npm run dev`.
 
 Tips
+
 - SVG or a transparent PNG/WebP works best. Logos sit on a light tile in both themes.
 - Logos are shown up to 52px tall; a wide logo around 400×120px (or any SVG) looks crisp.
 - Logos show in greyscale and turn to full colour on hover.
