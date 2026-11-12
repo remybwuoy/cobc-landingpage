@@ -7,7 +7,6 @@
   --ink-sub:#4A5753;         /* 7.2:1 on bg */
   --stroke:#DCE3E0;
   --main-color:#00b4b8;      /* brand colour: buttons, active menu item, accents */
-  --main-hover:#00a0a4;
   --on-main:#FFFFFF;         /* text on main-color fills */
   --teal:var(--main-color);  /* brand teal: UI + large text only */
   --teal-ink:#00747A;        /* teal for small text (5.5:1) */
@@ -112,12 +111,12 @@ button,input,select{font:inherit;color:inherit}
 /* =========================================================
    BUTTONS
    ========================================================= */
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:1rem;cursor:pointer;transition:background .25s var(--ease-quint), transform .2s var(--ease-quint);will-change:transform}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:1rem;cursor:pointer;transition:background .25s var(--ease-quint), color .25s, border-color .25s, transform .2s var(--ease-quint);will-change:transform}
 .btn:active{transform:scale(.97)}
 .btn-ink{background:var(--main-color);color:var(--on-main)}
-.btn-ink:hover{background:var(--main-hover)}
 .btn-ghost{border-color:var(--stroke);background:var(--glass)}
-.btn-ghost:hover{background:var(--surface)}
+/* hover and press: black in light mode, white in dark mode (where black would vanish into the page) */
+.btn:hover,.btn:active{background:var(--ink-hover);color:var(--on-ink);border-color:var(--ink-hover)}
 .btn-sm{height:44px;padding:0 20px;font-size:.9375rem}
 .roll{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
 .roll > span{display:block;transition:transform .5s var(--ease-expo)}

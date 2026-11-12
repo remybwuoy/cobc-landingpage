@@ -1,13 +1,13 @@
 /* =========================================================
    BACK TO TOP — floating, with a scroll-progress ring
    ========================================================= */
-.totop{position:fixed;right:var(--margin);bottom:22px;z-index:61;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--main-color);color:var(--on-main);box-shadow:0 20px 40px -20px var(--shadow);opacity:0;pointer-events:none;transform:translateY(24px) scale(.8);transition:opacity .4s, transform .7s var(--ease-back), background .25s}
+.totop{position:fixed;right:var(--margin);bottom:22px;z-index:61;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--main-color);color:var(--on-main);box-shadow:0 20px 40px -20px var(--shadow);opacity:0;pointer-events:none;transform:translateY(24px) scale(.8);transition:opacity .4s, transform .7s var(--ease-back), background .25s, color .25s}
 .totop.is-on{opacity:1;pointer-events:auto;transform:none}
-.totop:hover{background:var(--main-hover)}
+.totop:hover{background:var(--ink-hover);color:var(--on-ink)}
 .totop:active{transform:scale(.94)}
 .totop-ring{position:absolute;inset:0;width:100%;height:100%;rotate:-90deg;fill:none;stroke-width:2.5}
-.totop-ring circle{stroke:rgba(255,255,255,.3)}
-.totop-ring .fill{stroke:var(--on-main);stroke-linecap:round;transition:stroke-dashoffset .15s linear}
+.totop-ring circle{stroke:currentColor;stroke-opacity:.3}  /* ring follows the text colour, so it shows on every fill */
+.totop-ring .fill{stroke:currentColor;stroke-opacity:1;stroke-linecap:round;transition:stroke-dashoffset .15s linear}
 /* the arrow rolls up and a fresh one comes in from below, like the button labels */
 .totop-ar{display:block;height:18px;overflow:hidden}
 .totop-ar > span{display:flex;flex-direction:column;gap:12px;transition:transform .5s var(--ease-expo)}
