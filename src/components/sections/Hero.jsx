@@ -6,6 +6,8 @@ import { useGsap } from '../../hooks/useGsap';
 import { gsap, EXPO } from '../../lib/gsap';
 import { pointerFx } from '../../lib/env';
 import { AUTH_URL, AUTH_LABEL } from '../../data/content';
+import desktopShot from '../../assets/images/desktop-dashboard.png';
+import walletShot from '../../assets/images/desktop-wallet.png';
 import './Hero.css';
 
 /*
@@ -16,9 +18,13 @@ import './Hero.css';
  */
 const fragments = [
   {
-    key: 'choose', depth: 3, out: [-1.1, -0.6], dx: '13s', dy: '17s', className: 'f-phone f-choose',
-    style: { left: '4%', top: '12%', width: 'clamp(130px,11vw,180px)' },
-    content: <><span className="tile-bg tb-a" /><Phone screen="choose" rotate="-7deg" /></>,
+    // The web app on laptops (transparent PNGs in src/assets/images/). Large and far back, blurred like the other
+    // distant pieces: 70% of each laptop is on screen and 30% runs past the edge. On mobile only this first one shows.
+    // --lap (Hero.css) is the laptop's width. This image has margins (the laptop spans 12.7%–86.7% of it), so the
+    // image is 1.351 × --lap wide and is shifted left by 0.4716 × --lap, which puts 30% of the laptop off screen.
+    key: 'desktop', depth: 3, out: [-1.1, -0.6], dx: '13s', dy: '17s', className: 'f-desktop',
+    style: { left: 'calc(var(--lap) * -0.4716)', top: '9%', width: 'calc(var(--lap) * 1.351)' },
+    content: <><span className="tile-bg tb-a" /><img src={desktopShot} alt="" width="692" height="361" draggable="false" /></>,
   },
   {
     key: 'step', depth: 2, out: [-0.6, -1], dx: '11s', dy: '14s', className: 'f-step',
@@ -36,9 +42,10 @@ const fragments = [
     ),
   },
   {
-    key: 'certs', depth: 2, out: [1.1, -0.4], dx: '16s', dy: '13s', className: 'f-phone f-certs',
-    style: { right: '4%', top: '15%', width: 'clamp(150px,12.5vw,200px)' },
-    content: <><span className="tile-bg tb-b" /><Phone screen="certs" rotate="6deg" /></>,
+    // Cowry wallet. The laptop fills this image edge to edge: --lap wide, 30% of it past the right edge.
+    key: 'wallet', depth: 3, out: [1.1, -0.4], dx: '16s', dy: '13s', className: 'f-desktop f-wallet',
+    style: { right: 'calc(var(--lap) * -0.3)', top: '8%', width: 'var(--lap)' },
+    content: <><span className="tile-bg tb-b" /><img src={walletShot} alt="" width="658" height="379" draggable="false" /></>,
   },
   {
     key: 'job', depth: 1, out: [-1, 0.6], dx: '12s', dy: '16s',
