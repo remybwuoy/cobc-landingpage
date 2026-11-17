@@ -49,7 +49,7 @@ const fragments = [
   },
   {
     key: 'job', depth: 1, out: [-1, 0.6], dx: '12s', dy: '16s',
-    style: { left: '6%', top: '66%' },
+    style: { left: '6%', top: '68%' },
     content: (
       <div className="card" style={{ width: 250 }}>
         <div className="note">Application · Home care agency</div>
@@ -63,7 +63,7 @@ const fragments = [
   },
   {
     key: 'chips', depth: 1, out: [-0.4, 1], dx: '14s', dy: '11s',
-    style: { left: '26%', top: '83%' },
+    style: { left: '26%', top: 'max(83%, calc(50% + 250px))' }, // stays below the buttons on short screens
     content: (
       <div style={{ display: 'flex', gap: 10 }}>
         <span className="pill-chip">CPR <PlusCircleIcon /></span>
@@ -73,11 +73,12 @@ const fragments = [
   },
   {
     key: 'feed', depth: 1, out: [0.3, 1.2], dx: '12s', dy: '15s', className: 'f-phone f-feed',
-    style: { right: '20%', top: '63%', width: 'clamp(170px,14vw,230px)' },
+    // below the centred copy on short screens too (the copy's subtext ends ~170px under the middle)
+    style: { right: '20%', top: 'max(70%, calc(50% + 175px))', width: 'clamp(170px,14vw,230px)' },
     content: <Phone screen="feed" rotate="-3deg" />,
   },
   {
-    key: 'treasure', depth: 2, out: [1, 0.8], dx: '17s', dy: '12s',
+    key: 'treasure', depth: 2, out: [1, 0.8], dx: '17s', dy: '12s', className: 'f-treasure',
     style: { right: '3%', top: '70%' },
     content: (
       <div className="card" style={{ width: 240, background: 'var(--dark)', color: 'var(--on-dark)', borderColor: 'transparent' }}>

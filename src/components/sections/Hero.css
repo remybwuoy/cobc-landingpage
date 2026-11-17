@@ -1,18 +1,21 @@
 /* =========================================================
    2. HERO — orbit of app fragments (signature, part 1)
    ========================================================= */
-/* desktop laptop width: as big as possible while the 70% on screen still clears the headline (≈660px at 1440, 900px from ~1790) */
-.hero{--lap:clamp(340px, calc(70vw - 350px), 900px)}
+/* desktop laptop width: as big as possible while the 70% on screen still clears the headline (≈580px at 1440, 860px from ~1930).
+   Tuned for the up-to-104px headline; with a 56px headline clamp(340px, calc(70vw - 350px), 900px) fits */
+.hero{--lap:clamp(320px, calc(57vw - 240px), 860px)}
 .hero{position:relative;height:100vh;min-height:720px;overflow:hidden;display:grid;place-items:center;text-align:center}
 .hero-glow{position:absolute;left:50%;bottom:-38vh;width:140vw;height:80vh;translate:-50% 0;background:radial-gradient(closest-side, var(--glow-strong), var(--glow-mid) 55%, transparent 100%);pointer-events:none}
 .hero-copy{position:relative;z-index:5;padding-inline:var(--margin);max-width:820px}
-.hero h1{font-weight:700;letter-spacing:-.03em;line-height:1.05;font-size:var(--fs-hero);margin:22px 0 22px}
+.hero h1{font-weight:var(--fw-hero);letter-spacing:-.04em;line-height:1;font-size:var(--fs-hero);margin:22px 0 22px}
 .hero h1 .t{color:var(--teal)}
 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
 .line > span{display:block}
 .js-motion .hero .line > span{transform:translateY(108%)}
 .js-motion .hero .fade{opacity:0}
-.hero .lede{margin:0 auto;max-width:40ch}
+.hero .lede{margin:0 auto;max-width:34ch}
+/* the hero copy is all medium weight (500): headline, chip, subtext and buttons */
+.hero-copy,.hero-copy .chip,.hero-copy .btn{font-weight:500}
 .hero-ctas{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
 
 .frags{position:absolute;inset:0;z-index:3;pointer-events:none}
@@ -39,6 +42,11 @@
 @keyframes laptop-float{from{transform:translateY(-12px) rotate(-1.2deg)}to{transform:translateY(12px) rotate(.8deg)}}
 @media (max-width:1100px){
   .f-like,.f-step{display:none}
+}
+/* narrower desktops: the phone moves out to the right so it clears the copy; the treasure card would sit on it */
+@media (min-width:901px) and (max-width:1180px){
+  .f-feed{right:6% !important}
+  .f-treasure{display:none}
 }
 @media (max-width:900px){
   .hero{height:auto;min-height:0;padding:170px 0 0;display:flex;flex-direction:column;align-items:center}

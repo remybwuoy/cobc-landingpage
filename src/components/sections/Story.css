@@ -26,7 +26,7 @@
 .st.on{opacity:1}
 .st .n{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--teal-ink);font-size:.9375rem}
 .st .n::after{content:"";width:48px;height:1px;background:currentColor}
-.st h3{font-weight:700;font-size:var(--fs-h3);letter-spacing:-.025em;line-height:1.1;margin:16px 0 18px}
+.st h3{font-weight:var(--fw-display);font-size:var(--fs-h3);letter-spacing:-.025em;line-height:1.1;margin:16px 0 18px}
 .st p{color:var(--ink-sub);max-width:40ch}
 .st ul{list-style:none;margin-top:22px;display:grid;gap:10px}
 .st li{display:flex;gap:10px;align-items:center;font-weight:500}

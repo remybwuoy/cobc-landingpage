@@ -2,6 +2,6 @@
    4. STATEMENT — tonal paragraph with scrubbed fill
    ========================================================= */
 .statement{padding-block:clamp(110px,14vw,220px)}
-.statement p.big{font-family:var(--f-display);font-weight:600;font-size:clamp(24px, calc(16px + 2vw), 40px);line-height:1.2;letter-spacing:-.025em;max-width:24ch;margin-top:26px;color:var(--ink-sub)}
+.statement p.big{font-family:var(--f-display);font-weight:var(--fw-heading);font-size:clamp(24px, calc(16px + 2vw), 40px);line-height:1.2;letter-spacing:-.025em;max-width:24ch;margin-top:26px;color:var(--ink-sub)}
 .statement .lead{color:var(--ink)}
 .w{display:inline-block}

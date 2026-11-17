@@ -4,7 +4,7 @@
 .stats{background:var(--surface);padding-bottom:clamp(110px,12vw,180px)}
 .cols{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--stroke)}
 .col{border-right:1px solid var(--stroke);padding:22px 24px 26px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
-.odo{font-family:var(--f-display);font-weight:600;font-size:clamp(72px,9vw,144px);letter-spacing:-.04em;line-height:1;display:flex;font-variant-numeric:tabular-nums}
+.odo{font-family:var(--f-display);font-weight:var(--fw-heading);font-size:clamp(72px,9vw,144px);letter-spacing:-.04em;line-height:1;display:flex;font-variant-numeric:tabular-nums}
 .odo .dg{display:inline-block;height:1em;overflow:hidden}
 .odo .dg span{display:block;transition:transform 1.6s var(--ease-expo)}
 .odo .dg span b{display:block;height:1em;font-weight:500}

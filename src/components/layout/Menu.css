@@ -29,7 +29,7 @@
 .menu a.is-active .short{max-width:110px;opacity:1}
 
 /* top bar on wide screens: every item labelled (needs room beside the full wordmark) */
-@media (min-width:1520px){
+@media (min-width:1400px){
   .menu.is-top .short{display:none}
   .menu.is-top .full{display:inline-block;max-width:140px;opacity:1}
   .menu.is-top a{gap:8px;padding:0 16px 0 14px}
@@ -45,7 +45,7 @@
 .menu a:focus-visible::after{opacity:1;transform:none}
 /* the active item already shows its name, unless its short label is shorter than the full one */
 .menu a.is-active[data-same]::after{display:none}
-@media (min-width:1520px){ .menu.is-top a::after{display:none} } /* every label visible */
+@media (min-width:1400px){ .menu.is-top a::after{display:none} } /* every label visible */
 
 .on-dark .menu.is-top{border-color:rgba(231,242,239,.2)}
 
