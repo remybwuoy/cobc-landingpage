@@ -34,7 +34,13 @@
   --logo-tile:#FFFFFF;       /* partner logo tiles stay light so any logo reads on them */
     color-scheme:light;
 
-  --f:"Urbanist", system-ui, -apple-system, sans-serif;
+  /* type: Inter for interface and reading text, Plus Jakarta Sans for headlines and section headings */
+  --f:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-display:"Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --fs-body:1.125rem;                                   /* 18px; 16px on mobile (below) */
+  --fs-hero:clamp(36px, calc(26px + 2.5vw), 56px);      /* homepage headline: 36px mobile → 56px desktop */
+  --fs-h2:clamp(30px, calc(21px + 2.25vw), 48px);       /* section headings */
+  --fs-h3:clamp(24px, calc(19px + 1.25vw), 34px);       /* large sub-headings */
   --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:36px;
   --margin:clamp(20px,4vw,64px);
   --gutter:clamp(16px,1.6vw,24px);
@@ -83,7 +89,10 @@
 html{font-size:100%}
 html.lenis, html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto !important}
-body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (max-width:767px){ :root{--fs-body:1rem} }
+/* headings use the display face; text inside the app mock-ups stays in Inter */
+h1,h2,h3,.h2,.display{font-family:var(--f-display)}
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,select{font:inherit;color:inherit}
@@ -91,11 +100,11 @@ button,input,select{font:inherit;color:inherit}
 :root[data-theme="dark"] .grain{opacity:.05}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{padding-inline:var(--margin);max-width:1560px;margin-inline:auto}
-.label{font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-sub)}
+.label{font-size:.875rem;font-weight:600;letter-spacing:0;color:var(--ink-sub)}  /* sentence case, as written */
 .idx{font-size:.75rem;font-weight:600;color:var(--ink-sub);font-variant-numeric:tabular-nums}
-.h2{font-weight:500;letter-spacing:-.035em;line-height:1;font-size:clamp(40px,5.2vw,84px)}
+.h2{font-weight:700;letter-spacing:-.03em;line-height:1.08;font-size:var(--fs-h2)}
 .h2 .t{color:var(--teal)}
-.lede{font-size:clamp(1.0625rem,1.3vw,1.25rem);color:var(--ink-sub);max-width:36ch}
+.lede{font-size:clamp(1.0625rem, calc(.9rem + .5vw), 1.25rem);color:var(--ink-sub);max-width:36ch}
 .note{font-size:.75rem;color:var(--ink-sub)}
 .grain{transition:opacity .4s;pointer-events:none;position:fixed;inset:0;z-index:300;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
@@ -117,7 +126,7 @@ button,input,select{font:inherit;color:inherit}
 .btn-ghost{border-color:var(--stroke);background:var(--glass)}
 /* hover and press: black in light mode, white in dark mode (where black would vanish into the page) */
 .btn:hover,.btn:active{background:var(--ink-hover);color:var(--on-ink);border-color:var(--ink-hover)}
-.btn-sm{height:44px;padding:0 20px;font-size:.9375rem}
+.btn-sm{height:44px;padding:0 20px;font-size:1rem}
 .roll{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em}
 .roll > span{display:block;transition:transform .5s var(--ease-expo)}
 .roll > span::after{content:attr(data-text);display:block}

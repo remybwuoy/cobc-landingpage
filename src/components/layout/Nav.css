@@ -35,7 +35,7 @@
 @media (max-width:560px){
   .nav-right{gap:8px}
   .icon-btn{width:44px;height:44px}
-  .nav .btn-sm{padding:0 16px;font-size:.875rem}
+  .nav .btn-sm{padding:0 16px}
 }
 /* the wordmark would run into the centred menu here, so show the mark alone */
 @media (min-width:901px) and (max-width:1080px){

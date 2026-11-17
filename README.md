@@ -63,5 +63,5 @@ The site is one React app with client-side routes (`/`, `/privacy`, `/terms`). O
 - **FAQs:** questions and answers are `faqs` in `content.js`. One opens at a time.
 - **Content:** edit text in `src/data/content.js`. Hero fragments are defined at the top of `Hero.jsx`.
 - **Motion:** every GSAP animation runs inside `useGsap` and is cleaned up on unmount. Under `prefers-reduced-motion` the site skips Lenis, GSAP, typing, timers, the odometer and the theme reveal, as the original did.
-- **Fonts:** Urbanist loads from Google Fonts (`index.html`).
+- **Fonts:** Inter (interface and body text) and Plus Jakarta Sans (headlines and section headings) load from Google Fonts (`index.html`). Families and the type scale are tokens at the top of `src/styles/base.css` (`--f`, `--f-display`, `--fs-*`).
 - **Licences:** GSAP is free under its standard licence, and Lenis is MIT.
